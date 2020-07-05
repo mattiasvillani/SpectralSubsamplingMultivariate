@@ -1,0 +1,72 @@
+\documentclass[11pt,oneside,english]{amsart}
+\usepackage{mathpazo}
+\usepackage[scaled=0.92]{helvet}
+\usepackage{courier}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=3.2cm,bmargin=3.2cm,lmargin=2.7cm,rmargin=2.7cm}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage[authoryear]{natbib}
+\onehalfspacing
+
+\makeatletter
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{plain}
+\newtheorem{acknowledgement}{Acknowledgement}
+\newtheorem{axiom}{Axiom}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{remark}{Remark}[section]
+\numberwithin{equation}{section}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\title[Multivariate Spectral Subsampling MCMC]{Spectral Subsampling MCMC for Multivariate Time Series}
+\author{Robert Kohn, Matias Quiroz and Mattias Villani}
+\thanks{
+Kohn: \textit{School of Business, University of New South Wales}. 
+Quiroz: \textit{University of Technology Sydney}.
+Villani: \textit{Dept of Statistics, Stockholm University} and 
+\textit{Department of Computer and Information Science, Linkoping University}.
+\textit{E-mail: mattias.villani@liu.se}.
+}
+
+\begin{abstract}
+Whatevs 
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Intro stuff.
+
+\section{Model}
+
+Spectral subsampling MCMC was proposed in \citet{salomone2019spectral} to accelerate
+MCMC for long stationary univariate time series.
+
+\section{Experiments}
+
+\section{Conclusions}
+
+\bibliographystyle{apalike}
+\bibliography{refMultiSpectralMCMC}
+
+
+\appendix
+
+\section{Additional results or proofs}
+Stuff goes in here.
+
+\end{document}
