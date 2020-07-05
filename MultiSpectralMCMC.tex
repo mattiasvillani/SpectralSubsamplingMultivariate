@@ -49,12 +49,51 @@ Whatevs
 
 \section{Introduction}
 
-Intro stuff.
-
-\section{Model}
-
 Spectral subsampling MCMC was proposed in \citet{salomone2019spectral} to accelerate
 MCMC for long stationary univariate time series.
+
+
+\section{Model}
+Let $\mathbf{X}_t \in \mathbb{R}^d$ be a $d$-variate zero mean stationary time series with autocovariance
+function
+\begin{equation}
+    \mathbb{C}_{\mathbf{X}}(\tau) = \mathrm{Cov}(\mathbf{X}_t,\mathbf{X}_{t-u})
+\end{equation}
+The spectral density matrix is
+\begin{equation}
+    f_{\mathbf{X}}(\omega) = \frac{1}{2\pi}\sum_{\tau=-\infty}^\infty 
+        \mathbb{C}_{\mathbf{X}}(\tau)\exp(-i\omega \tau),
+\end{equation}
+with the diagonal elements is the usual spectral density for each time series and the off-diagonal
+elements are cross-spectral densities 
+\begin{equation}
+    f_{jk}(\omega) = \sum_{\tau=-\infty}^\infty \mathbb{C}_{jk}(\tau)\exp(-i\omega \tau).
+\end{equation}   
+
+The Discrete Fourier Transform (DFT) of $\mathbf{X}_t$ is
+\begin{equation}
+    J_T(\omega) = \sum_{t=0}^{T-1} \mathbf{X}_t \exp(-i\omega t)
+\end{equation}
+for $\omega \in [-\pi/2,\pi/2]$
+
+The elements of the the DFT $J_T(\omega)$ at the Fourier frequencies for 
+$\Omega_T = \{2\pi k/T\}_{k=0}^{[T/2]}$ are asymptotically independent complex multivariate normal 
+\citep{brillinger2001time}
+\begin{equation}
+    J_T(\omega_k) \sim \mathrm{CN}(0,2\pi T f_{\mathbf{X}}(\omega_k)) \text{ as } T\rightarrow \infty.
+\end{equation}
+
+The periodogram ordinates $I_T(\omega) = T^{-1}J(\omega)\bar{J}(\omega)^\top$, where $\bar{J}(\omega)^\top$
+is the conjugate transpose, are therefore asymptotically 
+independent Complex Wishart distributed with one degree of freedom $I_T(\omega) \sim 
+CW(1,f_{\mathbf{X}}(\omega))$
+
+The Whittle log-likelihood is therefore
+\begin{equation*}
+    \ell_\mathcal{W}(\theta) \overset{c}{=} - \sum_{\omega\in\Omega_T}^T \left( \log | f_{\mathbf{X}}(\omega_k)| 
+     + \mathrm{tr}\left[f_{\mathbf{X}}(\omega_k)^{-1}I_T(\omega)\right] \right)
+\end{equation*}
+
 
 \section{Experiments}
 
